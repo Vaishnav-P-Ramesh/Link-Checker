@@ -1,1 +1,1 @@
-https://lulale.com/
+https://example-broken-link.com/page

@@ -24,7 +24,7 @@ jobs:
 
       - name: 🔍 Run lychee on all files
         run: |
-          lychee --verbose --no-progress --output lychee-report.txt --no-exclude './**/*.md' './**/*.html' || true
+          lychee --verbose --no-progress --output lychee-report.txt --exclude './**/*.md' './**/*.html' || true
           cat lychee-report.txt
 
       - name: 🚨 Fail on broken links

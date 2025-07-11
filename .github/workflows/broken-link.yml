@@ -1,4 +1,4 @@
-name: 🔗 Broken Link Checker
+name: Broken Link Checker
 
 on:
   push:
@@ -14,25 +14,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout Repository
+      - name: ⬇Checkout Repository
         uses: actions/checkout@v3
 
-      - name: 📥 Install Latest Lychee (link checker)
+      - name:  Install Latest Lychee (link checker)
         run: |
           curl -LsSf https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x86_64-unknown-linux-gnu.tar.gz -o lychee.tar.gz
           tar -xzf lychee.tar.gz
           sudo mv lychee /usr/local/bin
 
-      - name: 🔍 Run Lychee on all .md and .html files
+      - name:  Run Lychee on all .md and .html files
         run: |
           lychee --verbose --no-progress --exclude localhost,127.0.0.1,example.com --output lychee-report.txt './**/*.md' './**/*.html' || true
           cat lychee-report.txt
 
-      - name: 🚨 Fail if broken links found
+      - name:  Fail if broken links found
         run: |
           if grep -q "✗" lychee-report.txt; then
-            echo "❌ Broken links detected."
+            echo "Broken links detected."
             exit 1
           else
-            echo "✅ No broken links found."
+            echo " No broken links found."
           fi
